@@ -14,7 +14,7 @@
         <div class="shop-wrapper">
             <ul ref="itemList">
                 <li class="shops-li" v-for="(right, index1) in searchgoods" :key="index1">
-                    <div v-for="(items, index) in right.info">
+                    <div v-for="(items, index) in right.info" :key="index">
                         <div class="itemList-img">
                             <img :src="items.title_img" alt="">
                         </div>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="item-list">
                             <ul class="clearfix">
-                                <li v-for="(item, index) in items.list">
+                                <li v-for="(item, index) in items.list" :key="index">
                                     <div class="item-list-img">
                                         <img v-lazy="item.img" alt="">
                                     </div>
@@ -97,7 +97,7 @@ export default {
       //右边滚动
       this.rightBscroll = new BScroll('.shop-wrapper',{
         probeType:3,
-        click: true, 
+        click: true,
         tap: true
       });
       //监听右边滚动事件
@@ -126,7 +126,7 @@ export default {
         this.scrollY = this.rightLiTops[index];
         this.rightBscroll.scrollTo(0,-this.scrollY,200,)
     },
-    //左右联调 
+    //左右联调
     _initLeftScroll(index){
       let menu = this.$refs.menuList;
       let el = menu[index];
@@ -142,7 +142,6 @@ export default {
     height: 100%;
     background-color: #f5f5f5;
     overflow: hidden;
-    border:1px solid red ;
 }
 .shop {
     display: flex;
@@ -197,28 +196,26 @@ export default {
     color: #9999;
 }
 .shops-items {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
-}   
+}
 .shop-wrapper {
     padding: 0 .3rem;
-}  
-.shops-li {
-    /* padding-bottom: .15rem; */
 }
+
 .itemList-img {
     height: 2.05rem;
 }
 .itemList-img img {
     width: 100%;
-}  
+}
 .itemList-title {
     font-size: .35rem;
     text-align: center;
     height: .5rem;
     line-height: .5rem;
     margin: .2rem auto;
-}    
+}
 .itemList-title span {
     position: relative;
 }
@@ -232,7 +229,7 @@ export default {
     border-top: 1px solid #e0e0e0;
     transform: translate3d(-150%,-50%,0);
     -webkit-transform: translate3d(-150%,-50%,0);
-} 
+}
 .itemList-title span::after {
     content: "";
     position: absolute;
@@ -250,7 +247,6 @@ export default {
     width: 33.3%;
     float: left;
     margin-top: .2rem;
-    border:1px solid red;
 }
 .item-list-img {
     width: 1rem;
